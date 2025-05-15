@@ -1,0 +1,296 @@
+subject_area: game
+table_info:
+  - table: game
+    joins: []
+  - table: team
+    joins:
+      - game.team_id_home = team.id
+      - game.team_id_away = team.id
+  - table: game_summary
+    joins:
+      - game.game_id = game_summary.game_id
+  - table: line_score
+    joins:
+      - game.game_id = line_score.game_id
+  - table: play_by_play
+    joins:
+      - game.game_id = play_by_play.game_id
+  - table: other_stats
+    joins:
+      - game.game_id = other_stats.game_id
+columns:
+  season_id:
+    name: season id
+    type: string
+    column: season_id
+    desc: Unique identifier for the season.
+  team_id_home:
+    name: home team id
+    type: string
+    column: team_id_home
+    desc: Unique identifier for the home team.
+  team_abbreviation_home:
+    name: home team abbreviation
+    type: string
+    column: team_abbreviation_home
+    desc: Short code for the home team.
+  team_name_home:
+    name: home team name
+    type: string
+    column: team_name_home
+    desc: Name of the home team.
+  game_id:
+    name: game id
+    type: string
+    column: game_id
+    desc: Unique identifier for the game.
+  game_date:
+    name: game date
+    type: timestamp_ntz
+    column: game_date
+    desc: Date and time of the game.
+  matchup_home:
+    name: home matchup
+    type: string
+    column: matchup_home
+    desc: Description of the matchup from the home team's perspective.
+  wl_home:
+    name: home win/loss
+    type: string
+    column: wl_home
+    desc: Win/loss result for the home team (W = Win, L = Loss).
+  min:
+    name: minutes
+    type: int
+    column: min
+    desc: Total minutes played by the home team.
+  fgm_home:
+    name: home field goals made
+    type: float
+    column: fgm_home
+    desc: Field goals made by the home team.
+  fga_home:
+    name: home field goals attempted
+    type: float
+    column: fga_home
+    desc: Field goals attempted by the home team.
+  fg_pct_home:
+    name: home field goal percentage
+    type: float
+    column: fg_pct_home
+    desc: Field goal percentage for the home team.
+  fg3m_home:
+    name: home three-point field goals made
+    type: float
+    column: fg3m_home
+    desc: Three-point field goals made by the home team.
+  fg3a_home:
+    name: home three-point field goals attempted
+    type: float
+    column: fg3a_home
+    desc: Three-point field goals attempted by the home team.
+  fg3_pct_home:
+    name: home three-point field goal percentage
+    type: float
+    column: fg3_pct_home
+    desc: Three-point field goal percentage for the home team.
+  ftm_home:
+    name: home free throws made
+    type: float
+    column: ftm_home
+    desc: Free throws made by the home team.
+  fta_home:
+    name: home free throws attempted
+    type: float
+    column: fta_home
+    desc: Free throws attempted by the home team.
+  ft_pct_home:
+    name: home free throw percentage
+    type: float
+    column: ft_pct_home
+    desc: Free throw percentage for the home team.
+  oreb_home:
+    name: home offensive rebounds
+    type: float
+    column: oreb_home
+    desc: Offensive rebounds by the home team.
+  dreb_home:
+    name: home defensive rebounds
+    type: float
+    column: dreb_home
+    desc: Defensive rebounds by the home team.
+  reb_home:
+    name: home total rebounds
+    type: float
+    column: reb_home
+    desc: Total rebounds by the home team.
+  ast_home:
+    name: home assists
+    type: float
+    column: ast_home
+    desc: Assists by the home team.
+  stl_home:
+    name: home steals
+    type: float
+    column: stl_home
+    desc: Steals by the home team.
+  blk_home:
+    name: home blocks
+    type: float
+    column: blk_home
+    desc: Blocks by the home team.
+  tov_home:
+    name: home turnovers
+    type: float
+    column: tov_home
+    desc: Turnovers by the home team.
+  pf_home:
+    name: home personal fouls
+    type: float
+    column: pf_home
+    desc: Personal fouls by the home team.
+  pts_home:
+    name: home points
+    type: float
+    column: pts_home
+    desc: Total points scored by the home team.
+  plus_minus_home:
+    name: home plus/minus
+    type: int
+    column: plus_minus_home
+    desc: Plus/minus rating for the home team.
+  video_available_home:
+    name: home video available
+    type: int
+    column: video_available_home
+    desc: Indicates if video footage is available for the home team (1 = yes, 0 = no).
+  team_id_away:
+    name: away team id
+    type: string
+    column: team_id_away
+    desc: Unique identifier for the away team.
+  team_abbreviation_away:
+    name: away team abbreviation
+    type: string
+    column: team_abbreviation_away
+    desc: Short code for the away team.
+  team_name_away:
+    name: away team name
+    type: string
+    column: team_name_away
+    desc: Name of the away team.
+  matchup_away:
+    name: away matchup
+    type: string
+    column: matchup_away
+    desc: Description of the matchup from the away team's perspective.
+  wl_away:
+    name: away win/loss
+    type: string
+    column: wl_away
+    desc: Win/loss result for the away team (W = Win, L = Loss).
+  fgm_away:
+    name: away field goals made
+    type: float
+    column: fgm_away
+    desc: Field goals made by the away team.
+  fga_away:
+    name: away field goals attempted
+    type: float
+    column: fga_away
+    desc: Field goals attempted by the away team.
+  fg_pct_away:
+    name: away field goal percentage
+    type: float
+    column: fg_pct_away
+    desc: Field goal percentage for the away team.
+  fg3m_away:
+    name: away three-point field goals made
+    type: float
+    column: fg3m_away
+    desc: Three-point field goals made by the away team.
+  fg3a_away:
+    name: away three-point field goals attempted
+    type: float
+    column: fg3a_away
+    desc: Three-point field goals attempted by the away team.
+  fg3_pct_away:
+    name: away three-point field goal percentage
+    type: float
+    column: fg3_pct_away
+    desc: Three-point field goal percentage for the away team.
+  ftm_away:
+    name: away free throws made
+    type: float
+    column: ftm_away
+    desc: Free throws made by the away team.
+  fta_away:
+    name: away free throws attempted
+    type: float
+    column: fta_away
+    desc: Free throws attempted by the away team.
+  ft_pct_away:
+    name: away free throw percentage
+    type: float
+    column: ft_pct_away
+    desc: Free throw percentage for the away team.
+  oreb_away:
+    name: away offensive rebounds
+    type: float
+    column: oreb_away
+    desc: Offensive rebounds by the away team.
+  dreb_away:
+    name: away defensive rebounds
+    type: float
+    column: dreb_away
+    desc: Defensive rebounds by the away team.
+  reb_away:
+    name: away total rebounds
+    type: float
+    column: reb_away
+    desc: Total rebounds by the away team.
+  ast_away:
+    name: away assists
+    type: float
+    column: ast_away
+    desc: Assists by the away team.
+  stl_away:
+    name: away steals
+    type: float
+    column: stl_away
+    desc: Steals by the away team.
+  blk_away:
+    name: away blocks
+    type: float
+    column: blk_away
+    desc: Blocks by the away team.
+  tov_away:
+    name: away turnovers
+    type: float
+    column: tov_away
+    desc: Turnovers by the away team.
+  pf_away:
+    name: away personal fouls
+    type: float
+    column: pf_away
+    desc: Personal fouls by the away team.
+  pts_away:
+    name: away points
+    type: float
+    column: pts_away
+    desc: Total points scored by the away team.
+  plus_minus_away:
+    name: away plus/minus
+    type: int
+    column: plus_minus_away
+    desc: Plus/minus rating for the away team.
+  video_available_away:
+    name: away video available
+    type: int
+    column: video_available_away
+    desc: Indicates if video footage is available for the away team (1 = yes, 0 = no).
+  season_type:
+    name: season type
+    type: string
+    column: season_type
+    desc: Type of season (e.g., Regular Season, Playoffs).

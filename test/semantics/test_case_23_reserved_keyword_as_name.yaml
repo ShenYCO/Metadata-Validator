@@ -1,0 +1,26 @@
+NBA:  
+  folder: NBA
+  type: fact
+  source:
+    schema.game:
+      columns:
+        - <all>
+  attributes:
+    select:
+      name: select
+      synonym:
+        - selection
+      desc: This uses a SQL reserved keyword.
+      calculation: "[season_id]"
+      consideration: Use exact match for filtering.
+      function:
+        - distinct
+  metrics:
+    total_points:
+      name: total points
+      synonym:
+        - combined score
+        - game total points
+      desc: Total points scored by both teams in the game.
+      calculation: "[pts_home] + [pts_away]"
+      function: SUM

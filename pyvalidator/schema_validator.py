@@ -1,6 +1,6 @@
 import yaml
 from typing import List, Dict
-from pyvalidator.format_validator import SchemaWrapper, GeneratedSchema, TableInfo, Column
+from format_validator import SchemaWrapper, GeneratedSchema, TableInfo, Column
 from simple_ddl_parser import DDLParser
 from pprint import pprint
 

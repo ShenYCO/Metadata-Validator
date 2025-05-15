@@ -1,0 +1,364 @@
+folder: NBA
+type: fact
+source:
+  schema.play_by_play:
+    columns:
+      - <all>
+
+attributes:
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  eventnum:
+    name: event number
+    synonym:
+      - play sequence
+      - event sequence
+    desc: Sequence number of the event within the game.
+    calculation: "[eventnum]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  eventmsgtype:
+    name: event message type
+    synonym:
+      - play type
+      - event type
+    desc: Type of event (e.g., shot, foul, rebound).
+    calculation: "[eventmsgtype]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  eventmsgactiontype:
+    name: event message action type
+    synonym:
+      - play subtype
+      - event subtype
+    desc: Subtype of the event (e.g., type of shot or foul).
+    calculation: "[eventmsgactiontype]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  period:
+    name: period
+    synonym:
+      - quarter
+      - game segment
+    desc: The period (quarter or overtime) in which the event occurred.
+    calculation: "[period]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  wctimestring:
+    name: wall clock time string
+    synonym:
+      - game time
+      - wall clock time
+    desc: Wall clock time of the event (e.g., 12:00 PM).
+    calculation: "[wctimestring]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  pctimestring:
+    name: play clock time string
+    synonym:
+      - game clock
+      - play clock
+    desc: Game clock time of the event (e.g., 10:23).
+    calculation: "[pctimestring]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  homedescription:
+    name: home description
+    synonym:
+      - home team play
+      - home event
+    desc: Description of the event from the home team's perspective.
+    calculation: "[homedescription]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  neutraldescription:
+    name: neutral description
+    synonym:
+      - neutral play
+      - general event
+    desc: Neutral description of the event.
+    calculation: "[neutraldescription]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  visitordescription:
+    name: visitor description
+    synonym:
+      - away team play
+      - visitor event
+    desc: Description of the event from the visiting team's perspective.
+    calculation: "[visitordescription]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  score:
+    name: score
+    synonym:
+      - game score
+      - current score
+    desc: Current score at the time of the event.
+    calculation: "[score]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  scoremargin:
+    name: score margin
+    synonym:
+      - point difference
+      - lead margin
+    desc: Point margin at the time of the event.
+    calculation: "[scoremargin]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  person1type:
+    name: person 1 type
+    synonym:
+      - primary player role
+      - player 1 role
+    desc: Role of the first player involved in the event (e.g., player, team).
+    calculation: "[person1type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player1_id:
+    name: player 1 id
+    synonym:
+      - primary player id
+      - player 1 identifier
+    desc: Unique identifier for the first player involved.
+    calculation: "[player1_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player1_name:
+    name: player 1 name
+    synonym:
+      - primary player name
+      - player 1 full name
+    desc: Name of the first player involved.
+    calculation: "[player1_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player1_team_id:
+    name: player 1 team id
+    synonym:
+      - primary team id
+      - player 1 team identifier
+    desc: Unique identifier for the first player's team.
+    calculation: "[player1_team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player1_team_city:
+    name: player 1 team city
+    synonym:
+      - primary team city
+      - player 1 team location
+    desc: City of the first player's team.
+    calculation: "[player1_team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player1_team_nickname:
+    name: player 1 team nickname
+    synonym:
+      - primary team nickname
+      - player 1 team name
+    desc: Nickname of the first player's team.
+    calculation: "[player1_team_nickname]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player1_team_abbreviation:
+    name: player 1 team abbreviation
+    synonym:
+      - primary team abbreviation
+      - player 1 team code
+    desc: Short code for the first player's team.
+    calculation: "[player1_team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  person2type:
+    name: person 2 type
+    synonym:
+      - secondary player role
+      - player 2 role
+    desc: Role of the second player involved in the event (e.g., player, team).
+    calculation: "[person2type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player2_id:
+    name: player 2 id
+    synonym:
+      - secondary player id
+      - player 2 identifier
+    desc: Unique identifier for the second player involved.
+    calculation: "[player2_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player2_name:
+    name: player 2 name
+    synonym:
+      - secondary player name
+      - player 2 full name
+    desc: Name of the second player involved.
+    calculation: "[player2_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player2_team_id:
+    name: player 2 team id
+    synonym:
+      - secondary team id
+      - player 2 team identifier
+    desc: Unique identifier for the second player's team.
+    calculation: "[player2_team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player2_team_city:
+    name: player 2 team city
+    synonym:
+      - secondary team city
+      - player 2 team location
+    desc: City of the second player's team.
+    calculation: "[player2_team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player2_team_nickname:
+    name: player 2 team nickname
+    synonym:
+      - secondary team nickname
+      - player 2 team name
+    desc: Nickname of the second player's team.
+    calculation: "[player2_team_nickname]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player2_team_abbreviation:
+    name: player 2 team abbreviation
+    synonym:
+      - secondary team abbreviation
+      - player 2 team code
+    desc: Short code for the second player's team.
+    calculation: "[player2_team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  person3type:
+    name: person 3 type
+    synonym:
+      - tertiary player role
+      - player 3 role
+    desc: Role of the third player involved in the event (e.g., player, team).
+    calculation: "[person3type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player3_id:
+    name: player 3 id
+    synonym:
+      - tertiary player id
+      - player 3 identifier
+    desc: Unique identifier for the third player involved.
+    calculation: "[player3_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player3_name:
+    name: player 3 name
+    synonym:
+      - tertiary player name
+      - player 3 full name
+    desc: Name of the third player involved.
+    calculation: "[player3_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player3_team_id:
+    name: player 3 team id
+    synonym:
+      - tertiary team id
+      - player 3 team identifier
+    desc: Unique identifier for the third player's team.
+    calculation: "[player3_team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player3_team_city:
+    name: player 3 team city
+    synonym:
+      - tertiary team city
+      - player 3 team location
+    desc: City of the third player's team.
+    calculation: "[player3_team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player3_team_nickname:
+    name: player 3 team nickname
+    synonym:
+      - tertiary team nickname
+      - player 3 team name
+    desc: Nickname of the third player's team.
+    calculation: "[player3_team_nickname]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player3_team_abbreviation:
+    name: player 3 team abbreviation
+    synonym:
+      - tertiary team abbreviation
+      - player 3 team code
+    desc: Short code for the third player's team.
+    calculation: "[player3_team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  video_available_flag:
+    name: video available flag
+    synonym:
+      - video flag
+      - replay available
+    desc: Indicates if video footage is available for the event (Y/N).
+    calculation: "[video_available_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  scoring_player_id:
+    name: scoring player id
+    synonym:
+      - scoring player
+    desc: Unique identifier for the player who scored.
+    calculation: "[scoring_player_id]"
+    consideration: Use exact match for filtering.
+metrics:
+  score_by_scoring_player:
+      name: score by scoring player
+      synonym:
+      - score by player
+      desc: Score achieved by the player who scored.
+      calculation: "[score_by_scoring_player]"
+      function: SUM
+      

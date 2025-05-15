@@ -1,0 +1,26 @@
+NBA:  
+  folder: NBA
+  type: fact
+  source:
+    schema.game:
+      columns:
+        - <all>
+  attributes:
+    season_id:
+      name: season id
+      synonym:
+        - season identifier
+        - nba season id
+      desc: Unique identifier for the season.
+      calculation: "[season_id]"
+      consideration: Use exact match for filtering.
+      function:
+        - distinct
+  metrics:
+    derived_metric:
+      name: derived metric
+      synonym:
+        - obtained metric
+      desc: A randomly defined metric. 
+      calculation: "[season_id]"
+      function: SUM

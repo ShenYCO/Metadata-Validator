@@ -1,0 +1,268 @@
+folder: NBA
+type: dimension
+source:
+  schema.team_info_common:
+    columns:
+      - <all>
+
+attributes:
+  team_id:
+    name: team id
+    synonym:
+      - franchise id
+      - team identifier
+    desc: Unique identifier for the team.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  season_year:
+    name: season year
+    synonym:
+      - nba season
+      - season
+    desc: The season year (e.g., 2022 for the 2022–23 season).
+    calculation: "[season_year]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city:
+    name: team city
+    synonym:
+      - franchise city
+      - team location
+    desc: City where the team is based.
+    calculation: "[team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_name:
+    name: team name
+    synonym:
+      - franchise name
+      - team full name
+    desc: Name of the team.
+    calculation: "[team_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_abbreviation:
+    name: team abbreviation
+    synonym:
+      - team code
+      - franchise abbreviation
+    desc: Short code for the team (e.g., LAL, GSW).
+    calculation: "[team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_conference:
+    name: team conference
+    synonym:
+      - conference
+      - nba conference
+    desc: Conference the team belongs to (e.g., East, West).
+    calculation: "[team_conference]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_division:
+    name: team division
+    synonym:
+      - division
+      - nba division
+    desc: Division the team belongs to (e.g., Southeast, Pacific).
+    calculation: "[team_division]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_code:
+    name: team code
+    synonym:
+      - internal team code
+      - franchise code
+    desc: Internal team code.
+    calculation: "[team_code]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_slug:
+    name: team slug
+    synonym:
+      - url-friendly name
+      - team url
+    desc: URL-friendly version of the team name.
+    calculation: "[team_slug]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  w:
+    name: wins
+    synonym:
+      - victories
+      - team wins
+    desc: Number of wins in the season.
+    calculation: "[w]"
+    consideration: Use range filtering for win values.
+    function:
+      - distinct
+  l:
+    name: losses
+    synonym:
+      - defeats
+      - team losses
+    desc: Number of losses in the season.
+    calculation: "[l]"
+    consideration: Use range filtering for loss values.
+    function:
+      - distinct
+  pct:
+    name: win percentage
+    synonym:
+      - winning percentage
+      - success rate
+    desc: Win percentage (calculated as wins / (wins + losses)).
+    calculation: "[pct]"
+    consideration: Use range filtering for percentage values.
+    function:
+      - distinct
+  conf_rank:
+    name: conference rank
+    synonym:
+      - conference standing
+      - rank in conference
+    desc: Team's rank in their conference.
+    calculation: "[conf_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  div_rank:
+    name: division rank
+    synonym:
+      - division standing
+      - rank in division
+    desc: Team's rank in their division.
+    calculation: "[div_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  min_year:
+    name: minimum year
+    synonym:
+      - founding year
+      - earliest year
+    desc: The earliest year in the team's history.
+    calculation: "[min_year]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  max_year:
+    name: maximum year
+    synonym:
+      - latest year
+      - current year
+    desc: The latest year in the team's history.
+    calculation: "[max_year]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  league_id:
+    name: league id
+    synonym:
+      - nba id
+      - league identifier
+    desc: Unique identifier for the league (e.g., NBA).
+    calculation: "[league_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  season_id:
+    name: season id
+    synonym:
+      - season identifier
+      - nba season id
+    desc: Unique identifier for the season.
+    calculation: "[season_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  pts_rank:
+    name: points rank
+    synonym:
+      - offensive rank
+      - scoring rank
+    desc: Team's rank in points per game (PPG) across the league.
+    calculation: "[pts_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  pts_pg:
+    name: points per game
+    synonym:
+      - ppg
+      - scoring average
+    desc: Team's average points per game.
+    calculation: "[pts_pg]"
+    consideration: Use range filtering for PPG values.
+    function:
+      - distinct
+  reb_rank:
+    name: rebounds rank
+    synonym:
+      - rebounding rank
+      - board rank
+    desc: Team's rank in rebounds per game (RPG) across the league.
+    calculation: "[reb_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  reb_pg:
+    name: rebounds per game
+    synonym:
+      - rpg
+      - rebounding average
+    desc: Team's average rebounds per game.
+    calculation: "[reb_pg]"
+    consideration: Use range filtering for RPG values.
+    function:
+      - distinct
+  ast_rank:
+    name: assists rank
+    synonym:
+      - passing rank
+      - assist rank
+    desc: Team's rank in assists per game (APG) across the league.
+    calculation: "[ast_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  ast_pg:
+    name: assists per game
+    synonym:
+      - apg
+      - passing average
+    desc: Team's average assists per game.
+    calculation: "[ast_pg]"
+    consideration: Use range filtering for APG values.
+    function:
+      - distinct
+  opp_pts_rank:
+    name: opponent points rank
+    synonym:
+      - defensive rank
+      - opponent scoring rank
+    desc: Team's rank in opponent points per game (defensive ranking).
+    calculation: "[opp_pts_rank]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  opp_pts_pg:
+    name: opponent points per game
+    synonym:
+      - opponent ppg
+      - defensive average
+    desc: Average points allowed per game by the team.
+    calculation: "[opp_pts_pg]"
+    consideration: Use range filtering for opponent PPG values.
+    function:
+      - distinct

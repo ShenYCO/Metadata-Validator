@@ -1,0 +1,148 @@
+folder: NBA
+type: dimension
+source:
+  schema.draft_history:
+    columns:
+      - <all>
+
+attributes:
+  person_id:
+    name: person id
+    synonym:
+      - player id
+      - athlete id
+    desc: Unique identifier for the player.
+    calculation: "[person_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player_name:
+    name: player name
+    synonym:
+      - draft prospect name
+      - full name
+    desc: Full name of the player.
+    calculation: "[player_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  season:
+    name: season
+    synonym:
+      - draft season
+      - nba season
+    desc: The season of the NBA draft.
+    calculation: "[season]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  round_number:
+    name: round number
+    synonym:
+      - draft round
+      - selection round
+    desc: The round in which the player was drafted.
+    calculation: "[round_number]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  round_pick:
+    name: round pick
+    synonym:
+      - pick in round
+      - selection number
+    desc: The pick number within the draft round.
+    calculation: "[round_pick]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  overall_pick:
+    name: overall pick
+    synonym:
+      - draft position
+      - selection rank
+    desc: The overall pick number in the draft.
+    calculation: "[overall_pick]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  draft_type:
+    name: draft type
+    synonym:
+      - selection type
+      - draft category
+    desc: Type of draft (e.g., Draft, Supplemental Draft).
+    calculation: "[draft_type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id:
+    name: team id
+    synonym:
+      - franchise id
+      - team identifier
+    desc: Unique identifier for the team that drafted the player.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city:
+    name: team city
+    synonym:
+      - franchise city
+      - team location
+    desc: City of the team that drafted the player.
+    calculation: "[team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_name:
+    name: team name
+    synonym:
+      - franchise name
+      - team full name
+    desc: Name of the team that drafted the player.
+    calculation: "[team_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_abbreviation:
+    name: team abbreviation
+    synonym:
+      - team code
+      - franchise abbreviation
+    desc: Short code for the team that drafted the player.
+    calculation: "[team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  organization:
+    name: organization
+    synonym:
+      - college
+      - university
+    desc: The college, university, or organization the player was affiliated with before the draft.
+    calculation: "[organization]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  organization_type:
+    name: organization type
+    synonym:
+      - affiliation type
+      - pre-draft organization
+    desc: Type of organization (e.g., College/University).
+    calculation: "[organization_type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player_profile_flag:
+    name: player profile flag
+    synonym:
+      - profile available
+      - player data flag
+    desc: Indicates if a player profile exists for the player (Y/N).
+    calculation: "[player_profile_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct

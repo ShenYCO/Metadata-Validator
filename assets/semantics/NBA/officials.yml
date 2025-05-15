@@ -1,0 +1,58 @@
+folder: NBA
+type: dimension
+source:
+  schema.officials:
+    columns:
+      - <all>
+
+attributes:
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  official_id:
+    name: official id
+    synonym:
+      - referee id
+      - umpire id
+    desc: Unique identifier for the official (referee).
+    calculation: "[official_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  first_name:
+    name: first name
+    synonym:
+      - given name
+      - referee first name
+    desc: First name of the official.
+    calculation: "[first_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_name:
+    name: last name
+    synonym:
+      - surname
+      - referee last name
+    desc: Last name of the official.
+    calculation: "[last_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  jersey_num:
+    name: jersey number
+    synonym:
+      - uniform number
+      - referee number
+    desc: Jersey number worn by the official during the game.
+    calculation: "[jersey_num]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct

@@ -1,0 +1,464 @@
+folder: NBA
+type: fact
+source:
+  schema.line_score:
+    columns:
+      - <all>
+
+attributes:
+  game_date_est:
+    name: game date est
+    synonym:
+      - game date
+      - match date
+    desc: Date of the game in Eastern Standard Time (EST).
+    calculation: "[game_date_est]"
+    consideration: Use range filtering for dates.
+    function:
+      - distinct
+  game_sequence:
+    name: game sequence
+    synonym:
+      - game order
+      - sequence number
+    desc: Sequence number for the game (used for sorting or ordering).
+    calculation: "[game_sequence]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id_home:
+    name: home team id
+    synonym:
+      - home franchise id
+      - home team identifier
+    desc: Unique identifier for the home team.
+    calculation: "[team_id_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_home:
+    name: home team abbreviation
+    synonym:
+      - home team code
+      - home franchise abbreviation
+    desc: Short code for the home team.
+    calculation: "[team_abbreviation_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city_name_home:
+    name: home team city name
+    synonym:
+      - home city
+      - home team location
+    desc: City where the home team is based.
+    calculation: "[team_city_name_home]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_nickname_home:
+    name: home team nickname
+    synonym:
+      - home team mascot
+      - home franchise nickname
+    desc: Nickname of the home team.
+    calculation: "[team_nickname_home]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_wins_losses_home:
+    name: home team wins/losses
+    synonym:
+      - home team record
+      - home franchise w/l
+    desc: Win-loss record of the home team.
+    calculation: "[team_wins_losses_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  pts_qtr1_home:
+    name: home points quarter 1
+    synonym:
+      - home q1 points
+      - home first quarter points
+    desc: Points scored by the home team in the 1st quarter.
+    calculation: "[pts_qtr1_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr2_home:
+    name: home points quarter 2
+    synonym:
+      - home q2 points
+      - home second quarter points
+    desc: Points scored by the home team in the 2nd quarter.
+    calculation: "[pts_qtr2_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr3_home:
+    name: home points quarter 3
+    synonym:
+      - home q3 points
+      - home third quarter points
+    desc: Points scored by the home team in the 3rd quarter.
+    calculation: "[pts_qtr3_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr4_home:
+    name: home points quarter 4
+    synonym:
+      - home q4 points
+      - home fourth quarter points
+    desc: Points scored by the home team in the 4th quarter.
+    calculation: "[pts_qtr4_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot1_home:
+    name: home points overtime 1
+    synonym:
+      - home ot1 points
+      - home first overtime points
+    desc: Points scored by the home team in the 1st overtime period.
+    calculation: "[pts_ot1_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot2_home:
+    name: home points overtime 2
+    synonym:
+      - home ot2 points
+      - home second overtime points
+    desc: Points scored by the home team in the 2nd overtime period.
+    calculation: "[pts_ot2_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot3_home:
+    name: home points overtime 3
+    synonym:
+      - home ot3 points
+      - home third overtime points
+    desc: Points scored by the home team in the 3rd overtime period.
+    calculation: "[pts_ot3_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot4_home:
+    name: home points overtime 4
+    synonym:
+      - home ot4 points
+      - home fourth overtime points
+    desc: Points scored by the home team in the 4th overtime period.
+    calculation: "[pts_ot4_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot5_home:
+    name: home points overtime 5
+    synonym:
+      - home ot5 points
+      - home fifth overtime points
+    desc: Points scored by the home team in the 5th overtime period.
+    calculation: "[pts_ot5_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot6_home:
+    name: home points overtime 6
+    synonym:
+      - home ot6 points
+      - home sixth overtime points
+    desc: Points scored by the home team in the 6th overtime period.
+    calculation: "[pts_ot6_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot7_home:
+    name: home points overtime 7
+    synonym:
+      - home ot7 points
+      - home seventh overtime points
+    desc: Points scored by the home team in the 7th overtime period.
+    calculation: "[pts_ot7_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot8_home:
+    name: home points overtime 8
+    synonym:
+      - home ot8 points
+      - home eighth overtime points
+    desc: Points scored by the home team in the 8th overtime period.
+    calculation: "[pts_ot8_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot9_home:
+    name: home points overtime 9
+    synonym:
+      - home ot9 points
+      - home ninth overtime points
+    desc: Points scored by the home team in the 9th overtime period.
+    calculation: "[pts_ot9_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot10_home:
+    name: home points overtime 10
+    synonym:
+      - home ot10 points
+      - home tenth overtime points
+    desc: Points scored by the home team in the 10th overtime period.
+    calculation: "[pts_ot10_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_home:
+    name: home total points
+    synonym:
+      - home team points
+      - home franchise points
+    desc: Total points scored by the home team.
+    calculation: "[pts_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  team_id_away:
+    name: away team id
+    synonym:
+      - away franchise id
+      - away team identifier
+    desc: Unique identifier for the away team.
+    calculation: "[team_id_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_away:
+    name: away team abbreviation
+    synonym:
+      - away team code
+      - away franchise abbreviation
+    desc: Short code for the away team.
+    calculation: "[team_abbreviation_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city_name_away:
+    name: away team city name
+    synonym:
+      - away city
+      - away team location
+    desc: City where the away team is based.
+    calculation: "[team_city_name_away]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_nickname_away:
+    name: away team nickname
+    synonym:
+      - away team mascot
+      - away franchise nickname
+    desc: Nickname of the away team.
+    calculation: "[team_nickname_away]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_wins_losses_away:
+    name: away team wins/losses
+    synonym:
+      - away team record
+      - away franchise w/l
+    desc: Win-loss record of the away team.
+    calculation: "[team_wins_losses_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  pts_qtr1_away:
+    name: away points quarter 1
+    synonym:
+      - away q1 points
+      - away first quarter points
+    desc: Points scored by the away team in the 1st quarter.
+    calculation: "[pts_qtr1_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr2_away:
+    name: away points quarter 2
+    synonym:
+      - away q2 points
+      - away second quarter points
+    desc: Points scored by the away team in the 2nd quarter.
+    calculation: "[pts_qtr2_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr3_away:
+    name: away points quarter 3
+    synonym:
+      - away q3 points
+      - away third quarter points
+    desc: Points scored by the away team in the 3rd quarter.
+    calculation: "[pts_qtr3_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_qtr4_away:
+    name: away points quarter 4
+    synonym:
+      - away q4 points
+      - away fourth quarter points
+    desc: Points scored by the away team in the 4th quarter.
+    calculation: "[pts_qtr4_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot1_away:
+    name: away points overtime 1
+    synonym:
+      - away ot1 points
+      - away first overtime points
+    desc: Points scored by the away team in the 1st overtime period.
+    calculation: "[pts_ot1_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot2_away:
+    name: away points overtime 2
+    synonym:
+      - away ot2 points
+      - away second overtime points
+    desc: Points scored by the away team in the 2nd overtime period.
+    calculation: "[pts_ot2_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot3_away:
+    name: away points overtime 3
+    synonym:
+      - away ot3 points
+      - away third overtime points
+    desc: Points scored by the away team in the 3rd overtime period.
+    calculation: "[pts_ot3_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot4_away:
+    name: away points overtime 4
+    synonym:
+      - away ot4 points
+      - away fourth overtime points
+    desc: Points scored by the away team in the 4th overtime period.
+    calculation: "[pts_ot4_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot5_away:
+    name: away points overtime 5
+    synonym:
+      - away ot5 points
+      - away fifth overtime points
+    desc: Points scored by the away team in the 5th overtime period.
+    calculation: "[pts_ot5_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot6_away:
+    name: away points overtime 6
+    synonym:
+      - away ot6 points
+      - away sixth overtime points
+    desc: Points scored by the away team in the 6th overtime period.
+    calculation: "[pts_ot6_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot7_away:
+    name: away points overtime 7
+    synonym:
+      - away ot7 points
+      - away seventh overtime points
+    desc: Points scored by the away team in the 7th overtime period.
+    calculation: "[pts_ot7_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot8_away:
+    name: away points overtime 8
+    synonym:
+      - away ot8 points
+      - away eighth overtime points
+    desc: Points scored by the away team in the 8th overtime period.
+    calculation: "[pts_ot8_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot9_away:
+    name: away points overtime 9
+    synonym:
+      - away ot9 points
+      - away ninth overtime points
+    desc: Points scored by the away team in the 9th overtime period.
+    calculation: "[pts_ot9_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_ot10_away:
+    name: away points overtime 10
+    synonym:
+      - away ot10 points
+      - away tenth overtime points
+    desc: Points scored by the away team in the 10th overtime period.
+    calculation: "[pts_ot10_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_away:
+    name: away total points
+    synonym:
+      - away team points
+      - away franchise points
+    desc: Total points scored by the away team.
+    calculation: "[pts_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+
+metrics:
+  total_points:
+    name: total points
+    synonym:
+      - combined points
+      - game total points
+    desc: Total points scored by both teams in the game.
+    calculation: "[pts_home] + [pts_away]"
+    function: SUM
+  point_difference:
+    name: point difference
+    synonym:
+      - margin of victory
+      - game margin
+    desc: Difference in points between the home and away teams.
+    calculation: "[pts_home] - [pts_away]"
+    function: SUM
+  home_team_win:
+    name: home team win
+    synonym:
+      - home victory
+      - home win flag
+    desc: Indicates if the home team won the game (1 = yes, 0 = no).
+    calculation: "CASE WHEN [pts_home] > [pts_away] THEN 1 ELSE 0 END"
+    function: SUM

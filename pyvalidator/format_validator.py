@@ -1,7 +1,8 @@
 import re
 from pydantic import BaseModel, field_validator, model_validator
 from typing import List, Dict, Optional, Generic, TypeVar, Type            
-    
+import sys
+import yaml    
 
 class TableInfo(BaseModel):
     table: str
@@ -147,4 +148,21 @@ class GeneratedSemantics(BaseModel):
 GeneratedSemanticsType = TypeVar("GeneratedScemanticsType", bound= GeneratedSemantics)
 class SemanticWrapper(BaseModel, Generic[GeneratedSemanticsType]):
     root: Dict[str, GeneratedSemanticsType]
-    
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python format_validator.py <path_to_yaml_file>")
+        sys.exit(1)
+
+    path = sys.argv[1]
+
+    with open(path, 'r') as f:
+        data = yaml.safe_load(f)
+
+    try:
+        SchemaWrapper[GeneratedSchema](root=data)
+        print("Format validation passed.")
+    except Exception as e:
+        print(f"Format validation failed: {e}")
+        sys.exit(1)

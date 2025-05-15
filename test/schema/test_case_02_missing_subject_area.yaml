@@ -1,0 +1,26 @@
+NBA: 
+  table_info:
+    - table: game
+      joins: []
+    - table: team
+      joins:
+        - game.team_id_home = team.id
+        - game.team_id_away = team.id
+    - table: game_summary
+      joins:
+        - game.game_id = game_summary.game_id
+    - table: line_score
+      joins:
+        - game.game_id = line_score.game_id
+    - table: play_by_play
+      joins:
+        - game.game_id = play_by_play.game_id
+    - table: other_stats
+      joins:
+        - game.game_id = other_stats.game_id
+  columns:
+    season_id:
+      name: season id
+      type: string
+      column: season_id
+      desc: Unique identifier for the season.

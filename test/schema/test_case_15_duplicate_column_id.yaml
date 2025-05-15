@@ -1,0 +1,16 @@
+NBA: 
+  subject_area: game
+  table_info:
+    - table: game
+      joins: []
+  columns:
+    season_id:
+      name: season id
+      type: string
+      column: season_id
+      desc: Unique identifier for the season.
+    season_id:
+      name: duplicate id
+      type: varchar
+      column: season_id
+      desc: Duplicate identifier.

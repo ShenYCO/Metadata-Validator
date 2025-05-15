@@ -1,0 +1,16 @@
+NBA: 
+  subject_area: game
+  table_info:
+    - table: game
+      joins: []
+  columns:
+    season_id:
+      - name: season id
+        type: string
+        column: season_id
+        desc: Unique identifier for the season.
+    team_id_home:
+      name: home team id
+      type: string
+      column: team_id_home
+      desc: Unique identifier for the home team.

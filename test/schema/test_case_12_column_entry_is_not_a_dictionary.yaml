@@ -1,0 +1,7 @@
+NBA: 
+  subject_area: game
+  table_info:
+    - table: game
+      joins: []
+  columns:
+    season_id: "not a dictionary"

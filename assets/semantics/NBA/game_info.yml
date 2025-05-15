@@ -1,0 +1,48 @@
+folder: NBA
+type: dimension
+source:
+  schema.game_info:
+    columns:
+      - <all>
+
+attributes:
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_date:
+    name: game date
+    synonym:
+      - match date
+      - game timestamp
+    desc: Date and time of the game.
+    calculation: "[game_date]"
+    consideration: Use range filtering for dates.
+    function:
+      - distinct
+  attendance:
+    name: attendance
+    synonym:
+      - crowd size
+      - spectators
+    desc: Number of attendees at the game.
+    calculation: "[attendance]"
+    consideration: Use range filtering for attendance values.
+    function:
+      - distinct
+  game_time:
+    name: game time
+    synonym:
+      - match duration
+      - game length
+    desc: Duration or timing of the game.
+    calculation: "[game_time]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct

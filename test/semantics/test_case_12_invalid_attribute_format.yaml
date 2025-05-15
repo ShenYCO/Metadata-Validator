@@ -1,0 +1,18 @@
+NBA:  
+  folder: NBA
+  type: fact
+  source:
+    schema.game:
+      columns:
+        - <all>
+  attributes:
+    season_id: "string"
+  metrics:
+    total_points:
+      name: total points
+      synonym:
+        - combined score
+        - game total points
+      desc: Total points scored by both teams in the game.
+      calculation: "[pts_home] + [pts_away]"
+      function: SUM

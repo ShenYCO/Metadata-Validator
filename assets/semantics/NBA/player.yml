@@ -1,0 +1,76 @@
+folder: NBA
+type: dimension
+source:
+  schema.player:
+    columns:
+      - <all>
+
+attributes:
+  id:
+    name: player id
+    synonym:
+      - athlete id
+      - player identifier
+    desc: Unique identifier for the player.
+    calculation: "[id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  full_name:
+    name: full name
+    synonym:
+      - player name
+      - athlete name
+    desc: Full name of the player.
+    calculation: "[full_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  first_name:
+    name: first name
+    synonym:
+      - given name
+      - player first name
+    desc: Player's first name.
+    calculation: "[first_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_name:
+    name: last name
+    synonym:
+      - surname
+      - player last name
+    desc: Player's last name.
+    calculation: "[last_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  is_active:
+    name: is active
+    synonym:
+      - active status
+      - player status
+    desc: Indicates if the player is currently active in the NBA (1 = active, 0 = inactive).
+    calculation: "[is_active]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+
+metrics:
+  active_player_count:
+    name: active player count
+    synonym:
+      - number of active players
+      - active athletes
+    desc: Total number of active players in the NBA.
+    calculation: "SUM([is_active])"
+    function: SUM
+  inactive_player_count:
+    name: inactive player count
+    synonym:
+      - number of inactive players
+      - retired athletes
+    desc: Total number of inactive players in the NBA.
+    calculation: "SUM(CASE WHEN [is_active] = 0 THEN 1 ELSE 0 END)"
+    function: SUM
