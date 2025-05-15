@@ -1,0 +1,58 @@
+folder: NBA
+type: dimension
+source:
+  schema.team_history:
+    columns:
+      - <all>
+
+attributes:
+  team_id:
+    name: team id
+    synonym:
+      - franchise id
+      - team identifier
+    desc: Unique identifier for the team.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  city:
+    name: city
+    synonym:
+      - team city
+      - franchise location
+    desc: City where the team was based during a specific period.
+    calculation: "[city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  nickname:
+    name: nickname
+    synonym:
+      - team nickname
+      - franchise nickname
+    desc: Nickname or mascot of the team during that period.
+    calculation: "[nickname]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  year_founded:
+    name: year founded
+    synonym:
+      - establishment year
+      - founding year
+    desc: Year the team was established or moved to the city.
+    calculation: "[year_founded]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  year_active_till:
+    name: year active till
+    synonym:
+      - end year
+      - relocation year
+    desc: Year the team stopped being based in that city.
+    calculation: "[year_active_till]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct

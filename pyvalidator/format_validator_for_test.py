@@ -4,6 +4,7 @@ from typing import List, Dict, Optional, Generic, TypeVar, Type
 import sys
 import os
 from ruamel.yaml import YAML
+from ruamel.yaml.constructor import DuplicateKeyError
 
 # Add project root directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -19,6 +20,9 @@ class TableInfo(BaseModel):
     @field_validator('joins')
     @classmethod
     def _validate_joins_format(cls, joins):
+        if not isinstance(joins, list):
+            raise TypeError("InvalidFormatError: 'joins' must be a list.")
+
         if not joins:
             return joins
 
@@ -30,6 +34,7 @@ class TableInfo(BaseModel):
                 )
         return joins
 
+
     @field_validator('table')
     @classmethod
     def _empty_table(cls, table_name):
@@ -37,7 +42,15 @@ class TableInfo(BaseModel):
             raise ValueError("Empty table name in table_info")
         return table_name
 
-
+    @model_validator(mode="after")
+    def _check_required_keys(self):
+        # Validate that both table and joins exist
+        if self.table is None:
+            raise ValueError("MissingKeyError: 'table' is required in table_info.")
+        if self.joins is None:
+            raise ValueError("MissingKeyError: 'joins' is required in table_info.")
+        return self
+    
 class Column(BaseModel):
     name: str
     type: str
@@ -48,11 +61,31 @@ class Column(BaseModel):
     table: Optional[str] = None
     fetch: Optional[bool] = None
 
+    @field_validator("name")
+    @classmethod
+    def check_empty_name(cls, v):
+        if not v.strip():  # If the name is an empty string or only whitespace
+            raise ValueError("EmptyValueError: 'name' must not be empty.")
+        return v
 
 class GeneratedSchema(BaseModel):
     subject_area: str
     table_info: List[TableInfo]
     columns: Dict[str, Column]
+
+    @field_validator('table_info')
+    @classmethod
+    def check_table_info_not_empty(cls, v):
+        if not v:
+            raise ValueError("EmptyValueError: 'table_info' must not be empty.")
+        return v
+
+    @field_validator('columns')
+    @classmethod
+    def check_columns_not_empty(cls, v):
+        if not v:
+            raise ValueError("EmptyValueError: 'columns' must not be empty.")
+        return v
 
     @model_validator(mode="after")
     def _check_unique_column_id(self):
@@ -119,7 +152,7 @@ class GeneratedSemantics(BaseModel):
     metrics: Dict[str, Metrics]
 
 
-GeneratedSemanticsType = TypeVar("GeneratedScemanticsType", bound=GeneratedSemantics)
+GeneratedSemanticsType = TypeVar("GeneratedSemanticsType", bound=GeneratedSemantics)
 
 
 class SemanticWrapper(BaseModel, Generic[GeneratedSemanticsType]):
@@ -140,8 +173,13 @@ if __name__ == "__main__":
     try:
         with open(yaml_path, 'r') as f:
             data = yaml.load(f)
+            if not data:
+                raise ValueError("The schema file is empty.")
+    except DuplicateKeyError as dke:
+        logger.error(f"InvalidKeyError: Duplicate key found. {dke}")
+        sys.exit(1)
     except Exception as e:
-        logger.error(f"InvalidKeyError while loading YAML: {e}")
+        logger.error(f"EmptyFileError: {e}")
         sys.exit(1)
 
     try:
@@ -164,6 +202,9 @@ if __name__ == "__main__":
                 logger.error(f"   EmptyValueError: '{loc}' must be a non-empty string.")
             elif "model_type" in type_:
                 logger.error(f"   InvalidFormatError: '{loc}' must be a dictionary, not a list.")
+            elif "EmptyValueError" in msg:
+                # Change the error to match the desired format
+                logger.error(f"   EmptyValueError at '{loc}'")
             else:
                 logger.error(f"   ValidationError at '{loc}': {msg}")
 

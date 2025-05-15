@@ -1,0 +1,248 @@
+folder: NBA
+type: dimension
+source:
+  schema.draft_combine_stats:
+    columns:
+      - <all>
+
+attributes:
+  season:
+    name: season
+    synonym:
+      - draft season
+      - combine season
+    desc: The season of the NBA Draft Combine.
+    calculation: "[season]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player_id:
+    name: player id
+    synonym:
+      - athlete id
+      - draft prospect id
+    desc: Unique identifier for the player.
+    calculation: "[player_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  first_name:
+    name: first name
+    synonym:
+      - given name
+      - player first name
+    desc: Player's first name.
+    calculation: "[first_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_name:
+    name: last name
+    synonym:
+      - surname
+      - player last name
+    desc: Player's last name.
+    calculation: "[last_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player_name:
+    name: player name
+    synonym:
+      - full name
+      - draft prospect name
+    desc: Full name of the player.
+    calculation: "[player_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  position:
+    name: position
+    synonym:
+      - player position
+      - role
+    desc: Player's primary position (e.g., Guard, Forward).
+    calculation: "[position]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  height_wo_shoes:
+    name: height without shoes
+    synonym:
+      - barefoot height
+      - height in inches
+    desc: Player's height without shoes (in inches).
+    calculation: "[height_wo_shoes]"
+    consideration: Use range filtering for height values.
+    function:
+      - distinct
+  height_wo_shoes_ft_in:
+    name: height without shoes (feet-inches)
+    synonym:
+      - barefoot height formatted
+      - height in feet and inches
+    desc: Player's height without shoes in feet and inches.
+    calculation: "[height_wo_shoes_ft_in]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  height_w_shoes:
+    name: height with shoes
+    synonym:
+      - height in shoes
+      - total height
+    desc: Player's height with shoes (in inches).
+    calculation: "[height_w_shoes]"
+    consideration: Use range filtering for height values.
+    function:
+      - distinct
+  height_w_shoes_ft_in:
+    name: height with shoes (feet-inches)
+    synonym:
+      - height in shoes formatted
+      - total height in feet and inches
+    desc: Player's height with shoes in feet and inches.
+    calculation: "[height_w_shoes_ft_in]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  weight:
+    name: weight
+    synonym:
+      - player weight
+      - weight in pounds
+    desc: Player's weight in pounds.
+    calculation: "[weight]"
+    consideration: Use range filtering for weight values.
+    function:
+      - distinct
+  wingspan:
+    name: wingspan
+    synonym:
+      - arm span
+      - reach
+    desc: Player's wingspan (arm span) in inches.
+    calculation: "[wingspan]"
+    consideration: Use range filtering for wingspan values.
+    function:
+      - distinct
+  wingspan_ft_in:
+    name: wingspan (feet-inches)
+    synonym:
+      - arm span formatted
+      - reach in feet and inches
+    desc: Player's wingspan in feet and inches.
+    calculation: "[wingspan_ft_in]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  standing_reach:
+    name: standing reach
+    synonym:
+      - standing height with arms raised
+      - reach height
+    desc: Player's standing reach (height while standing with arms raised) in inches.
+    calculation: "[standing_reach]"
+    consideration: Use range filtering for reach values.
+    function:
+      - distinct
+  standing_reach_ft_in:
+    name: standing reach (feet-inches)
+    synonym:
+      - reach height formatted
+      - standing reach in feet and inches
+    desc: Player's standing reach in feet and inches.
+    calculation: "[standing_reach_ft_in]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  body_fat_pct:
+    name: body fat percentage
+    synonym:
+      - fat percentage
+      - body composition
+    desc: Player's body fat percentage.
+    calculation: "[body_fat_pct]"
+    consideration: Use range filtering for percentage values.
+    function:
+      - distinct
+  hand_length:
+    name: hand length
+    synonym:
+      - hand size
+      - hand measurement
+    desc: Length of the player's hand (in inches).
+    calculation: "[hand_length]"
+    consideration: Use range filtering for hand length values.
+    function:
+      - distinct
+  hand_width:
+    name: hand width
+    synonym:
+      - hand breadth
+      - hand size
+    desc: Width of the player's hand (in inches).
+    calculation: "[hand_width]"
+    consideration: Use range filtering for hand width values.
+    function:
+      - distinct
+  standing_vertical_leap:
+    name: standing vertical leap
+    synonym:
+      - vertical jump
+      - standing jump
+    desc: Player's standing vertical leap (in inches).
+    calculation: "[standing_vertical_leap]"
+    consideration: Use range filtering for leap values.
+    function:
+      - distinct
+  max_vertical_leap:
+    name: max vertical leap
+    synonym:
+      - maximum jump
+      - highest vertical
+    desc: Player's maximum vertical leap (in inches).
+    calculation: "[max_vertical_leap]"
+    consideration: Use range filtering for leap values.
+    function:
+      - distinct
+  lane_agility_time:
+    name: lane agility time
+    synonym:
+      - agility drill time
+      - lane drill
+    desc: Time taken to complete the lane agility drill (in seconds).
+    calculation: "[lane_agility_time]"
+    consideration: Use range filtering for time values.
+    function:
+      - distinct
+  modified_lane_agility_time:
+    name: modified lane agility time
+    synonym:
+      - modified agility drill
+      - adjusted lane drill
+    desc: Time taken to complete the modified lane agility drill (in seconds).
+    calculation: "[modified_lane_agility_time]"
+    consideration: Use range filtering for time values.
+    function:
+      - distinct
+  three_quarter_sprint:
+    name: three-quarter sprint
+    synonym:
+      - sprint time
+      - court sprint
+    desc: Time taken to complete the three-quarter court sprint (in seconds).
+    calculation: "[three_quarter_sprint]"
+    consideration: Use range filtering for time values.
+    function:
+      - distinct
+  bench_press:
+    name: bench press
+    synonym:
+      - bench repetitions
+      - strength test
+    desc: Number of bench press repetitions at 185 pounds.
+    calculation: "[bench_press]"
+    consideration: Use range filtering for repetition values.
+    function:
+      - distinct

@@ -38,6 +38,9 @@ class SchemaValidator:
         return ddl_type == schema_type  # fallback: exact match
 
     def validate_schema(self, generated_schema: Dict):
+        # if not generated_schema:
+        #     raise ValueError("EmptyFileError: The schema file is empty.")
+
         schema_key = list(generated_schema.keys())[0]
         schema_data = generated_schema[schema_key]
 

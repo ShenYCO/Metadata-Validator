@@ -1,0 +1,174 @@
+folder: NBA
+type: dimension
+source:
+  schema.game_summary:
+    columns:
+      - <all>
+
+attributes:
+  game_date_est:
+    name: game date est
+    synonym:
+      - game date
+      - date of game
+    desc: Date of the game in Eastern Standard Time (EST).
+    calculation: "[game_date_est]"
+    consideration: Use range filtering for dates.
+    function:
+      - distinct
+  game_sequence:
+    name: game sequence
+    synonym:
+      - game order
+      - sequence number
+    desc: Sequence number for the game (used for sorting or ordering).
+    calculation: "[game_sequence]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_id:
+    name: game id
+    synonym:
+      - game identifier
+      - match id
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_status_id:
+    name: game status id
+    synonym:
+      - status code
+      - game state
+    desc: Numeric code representing the status of the game.
+    calculation: "[game_status_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_status_string:
+    name: game status string
+    synonym:
+      - status description
+      - game state description
+    desc: Text description of the game status.
+    calculation: "[game_status_string]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  gamecode:
+    name: gamecode
+    synonym:
+      - game identifier code
+      - match code
+    desc: Unique code for the game, often combining the date and team abbreviations.
+    calculation: "[gamecode]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  home_team_id:
+    name: home team id
+    synonym:
+      - home franchise id
+      - home team identifier
+    desc: Unique identifier for the home team.
+    calculation: "[home_team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  visitor_team_id:
+    name: visitor team id
+    synonym:
+      - away franchise id
+      - visitor team identifier
+    desc: Unique identifier for the visiting team.
+    calculation: "[visitor_team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  season:
+    name: season
+    synonym:
+      - nba season
+      - game season
+    desc: The season in which the game was played.
+    calculation: "[season]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  live_period:
+    name: live period
+    synonym:
+      - current period
+      - game quarter
+    desc: The current period (quarter) of the game during live play.
+    calculation: "[live_period]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  live_pc_time:
+    name: live pc time
+    synonym:
+      - game clock time
+      - live game time
+    desc: The time remaining in the current period during live play.
+    calculation: "[live_pc_time]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  natl_tv_broadcaster_abbreviation:
+    name: national tv broadcaster abbreviation
+    synonym:
+      - broadcaster code
+      - tv network
+    desc: Abbreviation of the national TV broadcaster airing the game.
+    calculation: "[natl_tv_broadcaster_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  live_period_time_bcast:
+    name: live period time broadcast
+    synonym:
+      - broadcast time
+      - game clock broadcast
+    desc: The period and time remaining as displayed during the broadcast.
+    calculation: "[live_period_time_bcast]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  wh_status:
+    name: wh status
+    synonym:
+      - game status flag
+      - internal status
+    desc: A status flag (often used internally).
+    calculation: "[wh_status]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+
+metrics:
+  is_live_game:
+    name: is live game
+    synonym:
+      - live status
+      - game in progress
+    desc: Indicates if the game is currently live (1 = yes, 0 = no).
+    calculation: "CASE WHEN [live_period] > 0 THEN 1 ELSE 0 END"
+    function: SUM
+  is_nationally_televised:
+    name: is nationally televised
+    synonym:
+      - national broadcast
+      - tv game
+    desc: Indicates if the game is nationally televised (1 = yes, 0 = no).
+    calculation: "CASE WHEN [natl_tv_broadcaster_abbreviation] IS NOT NULL THEN 1 ELSE 0 END"
+    function: SUM
+  game_duration:
+    name: game duration
+    synonym:
+      - match length
+      - total game time
+    desc: Estimated duration of the game based on the live period and time.
+    calculation: "[live_period] * 12 + [live_pc_time]"
+    function: SUM

@@ -1,0 +1,310 @@
+folder: NBA
+type: measure
+source:
+  schema.other_stats:
+    columns:
+      - <all>
+
+attributes:
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  league_id:
+    name: league id
+    synonym:
+      - nba id
+      - league identifier
+    desc: Unique identifier for the league (e.g., NBA).
+    calculation: "[league_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id_home:
+    name: home team id
+    synonym:
+      - home franchise id
+      - home team identifier
+    desc: Unique identifier for the home team.
+    calculation: "[team_id_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_home:
+    name: home team abbreviation
+    synonym:
+      - home team code
+      - home franchise abbreviation
+    desc: Short code for the home team.
+    calculation: "[team_abbreviation_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city_home:
+    name: home team city
+    synonym:
+      - home franchise city
+      - home team location
+    desc: City where the home team is based.
+    calculation: "[team_city_home]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  pts_paint_home:
+    name: home points in the paint
+    synonym:
+      - home paint points
+      - home inside points
+    desc: Points scored by the home team in the paint.
+    calculation: "[pts_paint_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_2nd_chance_home:
+    name: home second chance points
+    synonym:
+      - home offensive rebounds points
+      - home putback points
+    desc: Second-chance points scored by the home team.
+    calculation: "[pts_2nd_chance_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_fb_home:
+    name: home fast break points
+    synonym:
+      - home transition points
+      - home run-and-gun points
+    desc: Fast-break points scored by the home team.
+    calculation: "[pts_fb_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  largest_lead_home:
+    name: home largest lead
+    synonym:
+      - home biggest lead
+      - home maximum lead
+    desc: Largest lead by the home team during the game (in points).
+    calculation: "[largest_lead_home]"
+    consideration: Use range filtering for lead values.
+    function:
+      - distinct
+  lead_changes:
+    name: lead changes
+    synonym:
+      - number of lead changes
+      - lead swaps
+    desc: Number of times the lead changed during the game.
+    calculation: "[lead_changes]"
+    consideration: Use range filtering for count values.
+    function:
+      - distinct
+  times_tied:
+    name: times tied
+    synonym:
+      - number of ties
+      - tie count
+    desc: Number of times the score was tied during the game.
+    calculation: "[times_tied]"
+    consideration: Use range filtering for count values.
+    function:
+      - distinct
+  team_turnovers_home:
+    name: home team turnovers
+    synonym:
+      - home giveaways
+      - home mistakes
+    desc: Turnovers committed by the home team.
+    calculation: "[team_turnovers_home]"
+    consideration: Use range filtering for turnover values.
+    function:
+      - distinct
+  total_turnovers_home:
+    name: home total turnovers
+    synonym:
+      - home total giveaways
+      - home total mistakes
+    desc: Total turnovers involving the home team.
+    calculation: "[total_turnovers_home]"
+    consideration: Use range filtering for turnover values.
+    function:
+      - distinct
+  team_rebounds_home:
+    name: home team rebounds
+    synonym:
+      - home team boards
+      - home total rebounds
+    desc: Team rebounds by the home team (e.g., off missed free throws).
+    calculation: "[team_rebounds_home]"
+    consideration: Use range filtering for rebound values.
+    function:
+      - distinct
+  pts_off_to_home:
+    name: home points off turnovers
+    synonym:
+      - home points from giveaways
+      - home turnover points
+    desc: Points scored by the home team off turnovers.
+    calculation: "[pts_off_to_home]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  team_id_away:
+    name: away team id
+    synonym:
+      - away franchise id
+      - away team identifier
+    desc: Unique identifier for the away team.
+    calculation: "[team_id_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_away:
+    name: away team abbreviation
+    synonym:
+      - away team code
+      - away franchise abbreviation
+    desc: Short code for the away team.
+    calculation: "[team_abbreviation_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city_away:
+    name: away team city
+    synonym:
+      - away franchise city
+      - away team location
+    desc: City where the away team is based.
+    calculation: "[team_city_away]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  pts_paint_away:
+    name: away points in the paint
+    synonym:
+      - away paint points
+      - away inside points
+    desc: Points scored by the away team in the paint.
+    calculation: "[pts_paint_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_2nd_chance_away:
+    name: away second chance points
+    synonym:
+      - away offensive rebounds points
+      - away putback points
+    desc: Second-chance points scored by the away team.
+    calculation: "[pts_2nd_chance_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  pts_fb_away:
+    name: away fast break points
+    synonym:
+      - away transition points
+      - away run-and-gun points
+    desc: Fast-break points scored by the away team.
+    calculation: "[pts_fb_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+  largest_lead_away:
+    name: away largest lead
+    synonym:
+      - away biggest lead
+      - away maximum lead
+    desc: Largest lead by the away team during the game (in points).
+    calculation: "[largest_lead_away]"
+    consideration: Use range filtering for lead values.
+    function:
+      - distinct
+  team_turnovers_away:
+    name: away team turnovers
+    synonym:
+      - away giveaways
+      - away mistakes
+    desc: Turnovers committed by the away team.
+    calculation: "[team_turnovers_away]"
+    consideration: Use range filtering for turnover values.
+    function:
+      - distinct
+  total_turnovers_away:
+    name: away total turnovers
+    synonym:
+      - away total giveaways
+      - away total mistakes
+    desc: Total turnovers involving the away team.
+    calculation: "[total_turnovers_away]"
+    consideration: Use range filtering for turnover values.
+    function:
+      - distinct
+  team_rebounds_away:
+    name: away team rebounds
+    synonym:
+      - away team boards
+      - away total rebounds
+    desc: Team rebounds by the away team (e.g., off missed free throws).
+    calculation: "[team_rebounds_away]"
+    consideration: Use range filtering for rebound values.
+    function:
+      - distinct
+  pts_off_to_away:
+    name: away points off turnovers
+    synonym:
+      - away points from giveaways
+      - away turnover points
+    desc: Points scored by the away team off turnovers.
+    calculation: "[pts_off_to_away]"
+    consideration: Use range filtering for point values.
+    function:
+      - distinct
+
+metrics:
+  total_points_paint:
+    name: total points in the paint
+    synonym:
+      - combined paint points
+      - total inside points
+    desc: Total points scored in the paint by both teams.
+    calculation: "[pts_paint_home] + [pts_paint_away]"
+    function: SUM
+  total_second_chance_points:
+    name: total second chance points
+    synonym:
+      - combined putback points
+      - total offensive rebound points
+    desc: Total second-chance points scored by both teams.
+    calculation: "[pts_2nd_chance_home] + [pts_2nd_chance_away]"
+    function: SUM
+  total_fast_break_points:
+    name: total fast break points
+    synonym:
+      - combined transition points
+      - total run-and-gun points
+    desc: Total fast-break points scored by both teams.
+    calculation: "[pts_fb_home] + [pts_fb_away]"
+    function: SUM
+  total_turnovers:
+    name: total turnovers
+    synonym:
+      - combined giveaways
+      - total mistakes
+    desc: Total turnovers committed by both teams.
+    calculation: "[total_turnovers_home] + [total_turnovers_away]"
+    function: SUM
+  total_points_off_turnovers:
+    name: total points off turnovers
+    synonym:
+      - combined turnover points
+      - total points from giveaways
+    desc: Total points scored off turnovers by both teams.
+    calculation: "[pts_off_to_home] + [pts_off_to_away]"
+    function: SUM

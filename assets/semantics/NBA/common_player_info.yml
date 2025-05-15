@@ -1,0 +1,348 @@
+folder: NBA
+type: dimension
+source:
+  schema.common_player_info:
+    columns:
+      - <all>
+
+attributes:
+  person_id:
+    name: person id
+    synonym:
+      - player id
+      - athlete id
+    desc: Unique identifier for the player.
+    calculation: "[person_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  first_name:
+    name: first name
+    synonym:
+      - given name
+      - player first name
+    desc: Player's first name.
+    calculation: "[first_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_name:
+    name: last name
+    synonym:
+      - surname
+      - player last name
+    desc: Player's last name.
+    calculation: "[last_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  display_first_last:
+    name: display first last
+    synonym:
+      - full name
+      - player full name
+    desc: Full name in "First Last" format.
+    calculation: "[display_first_last]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  display_last_comma_first:
+    name: display last comma first
+    synonym:
+      - last, first name
+      - player name formatted
+    desc: Full name in "Last, First" format.
+    calculation: "[display_last_comma_first]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  display_fi_last:
+    name: display fi last
+    synonym:
+      - abbreviated name
+      - player abbreviated name
+    desc: Abbreviated name in "F. Last" format.
+    calculation: "[display_fi_last]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  player_slug:
+    name: player slug
+    synonym:
+      - url-friendly name
+      - player url
+    desc: URL-friendly version of the player's name.
+    calculation: "[player_slug]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  birthdate:
+    name: birthdate
+    synonym:
+      - date of birth
+      - player birthdate
+    desc: Player's date of birth.
+    calculation: "[birthdate]"
+    consideration: Use range filtering for dates.
+    function:
+      - distinct
+  school:
+    name: school
+    synonym:
+      - college
+      - university
+    desc: College or university the player attended.
+    calculation: "[school]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  country:
+    name: country
+    synonym:
+      - nationality
+      - player country
+    desc: Player's nationality.
+    calculation: "[country]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_affiliation:
+    name: last affiliation
+    synonym:
+      - previous team
+      - last organization
+    desc: Last team or organization the player was associated with before joining the NBA.
+    calculation: "[last_affiliation]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  height:
+    name: height
+    synonym:
+      - player height
+      - height in feet-inches
+    desc: Player's height in feet-inches format.
+    calculation: "[height]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  weight:
+    name: weight
+    synonym:
+      - player weight
+      - weight in pounds
+    desc: Player's weight in pounds.
+    calculation: "[weight]"
+    consideration: Use range filtering for weight values.
+    function:
+      - distinct
+  season_exp:
+    name: season experience
+    synonym:
+      - years of experience
+      - NBA experience
+    desc: Number of seasons the player has played in the NBA.
+    calculation: "[season_exp]"
+    consideration: Use range filtering for experience values.
+    function:
+      - distinct
+  jersey:
+    name: jersey number
+    synonym:
+      - player number
+      - uniform number
+    desc: Jersey number worn by the player.
+    calculation: "[jersey]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  position:
+    name: position
+    synonym:
+      - player position
+      - role
+    desc: Player's primary position (e.g., Forward, Center).
+    calculation: "[position]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  rosterstatus:
+    name: roster status
+    synonym:
+      - active status
+      - player status
+    desc: Current roster status (e.g., Active, Inactive).
+    calculation: "[rosterstatus]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  games_played_current_season_flag:
+    name: games played current season flag
+    synonym:
+      - current season flag
+      - played this season
+    desc: Indicates if the player has played in the current season (Y/N).
+    calculation: "[games_played_current_season_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id:
+    name: team id
+    synonym:
+      - team identifier
+      - franchise id
+    desc: Unique identifier for the team the player is associated with.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_name:
+    name: team name
+    synonym:
+      - franchise name
+      - team full name
+    desc: Name of the team.
+    calculation: "[team_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_abbreviation:
+    name: team abbreviation
+    synonym:
+      - team code
+      - franchise abbreviation
+    desc: Short code for the team (e.g., LAL, GSW).
+    calculation: "[team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_code:
+    name: team code
+    synonym:
+      - internal team code
+      - franchise code
+    desc: Internal team code.
+    calculation: "[team_code]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city:
+    name: team city
+    synonym:
+      - franchise city
+      - team location
+    desc: City where the team is based.
+    calculation: "[team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  playercode:
+    name: player code
+    synonym:
+      - player identifier
+      - historical player code
+    desc: Unique identifier for the player in historical data.
+    calculation: "[playercode]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  from_year:
+    name: from year
+    synonym:
+      - start year
+      - debut year
+    desc: First year the player played in the NBA.
+    calculation: "[from_year]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  to_year:
+    name: to year
+    synonym:
+      - end year
+      - retirement year
+    desc: Last year the player played in the NBA.
+    calculation: "[to_year]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  dleague_flag:
+    name: d-league flag
+    synonym:
+      - g league flag
+      - developmental league flag
+    desc: Indicates if the player played in the G League (Y/N).
+    calculation: "[dleague_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  nba_flag:
+    name: nba flag
+    synonym:
+      - nba player flag
+      - nba status
+    desc: Indicates if the player played in the NBA (Y/N).
+    calculation: "[nba_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  games_played_flag:
+    name: games played flag
+    synonym:
+      - played in nba flag
+      - nba games flag
+    desc: Indicates if the player has played in any NBA games (Y/N).
+    calculation: "[games_played_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  draft_year:
+    name: draft year
+    synonym:
+      - year drafted
+      - nba draft year
+    desc: Year the player was drafted.
+    calculation: "[draft_year]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  draft_round:
+    name: draft round
+    synonym:
+      - round drafted
+      - nba draft round
+    desc: Round in which the player was drafted.
+    calculation: "[draft_round]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  draft_number:
+    name: draft number
+    synonym:
+      - pick number
+      - draft position
+    desc: Overall pick number in the draft.
+    calculation: "[draft_number]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  greatest_75_flag:
+    name: greatest 75 flag
+    synonym:
+      - nba 75 flag
+      - top 75 player flag
+    desc: Indicates if the player was named one of the NBA's 75 Greatest Players (Y/N).
+    calculation: "[greatest_75_flag]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+
+metrics:
+  career_length:
+    name: career length
+    synonym:
+      - years in nba
+      - nba career duration
+    desc: Number of years the player was active in the NBA.
+    calculation: "[to_year] - [from_year]"
+    function: SUM

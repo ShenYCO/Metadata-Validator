@@ -1,0 +1,98 @@
+folder: NBA
+type: dimension
+source:
+  schema.inactive_players:
+    columns:
+      - <all>
+
+attributes:
+  game_id:
+    name: game id
+    synonym:
+      - match id
+      - game identifier
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  player_id:
+    name: player id
+    synonym:
+      - athlete id
+      - inactive player id
+    desc: Unique identifier for the player.
+    calculation: "[player_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  first_name:
+    name: first name
+    synonym:
+      - given name
+      - player first name
+    desc: Player's first name.
+    calculation: "[first_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  last_name:
+    name: last name
+    synonym:
+      - surname
+      - player last name
+    desc: Player's last name.
+    calculation: "[last_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  jersey_num:
+    name: jersey number
+    synonym:
+      - player number
+      - uniform number
+    desc: Jersey number worn by the player.
+    calculation: "[jersey_num]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id:
+    name: team id
+    synonym:
+      - franchise id
+      - team identifier
+    desc: Unique identifier for the team the player is associated with.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_city:
+    name: team city
+    synonym:
+      - franchise city
+      - team location
+    desc: City where the team is based.
+    calculation: "[team_city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_name:
+    name: team name
+    synonym:
+      - franchise name
+      - team full name
+    desc: Name of the team.
+    calculation: "[team_name]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  team_abbreviation:
+    name: team abbreviation
+    synonym:
+      - team code
+      - franchise abbreviation
+    desc: Short code for the team (e.g., LAL, GSW).
+    calculation: "[team_abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct

@@ -1,0 +1,174 @@
+folder: NBA
+type: dimension
+source:
+  schema.team_details:
+    columns:
+      - <all>
+
+attributes:
+  team_id:
+    name: team id
+    synonym:
+      - franchise id
+      - team identifier
+    desc: Unique identifier for the team.
+    calculation: "[team_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  abbreviation:
+    name: abbreviation
+    synonym:
+      - team code
+      - franchise abbreviation
+    desc: Short code for the team (e.g., LAL, GSW).
+    calculation: "[abbreviation]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  nickname:
+    name: nickname
+    synonym:
+      - team nickname
+      - franchise nickname
+    desc: Nickname or mascot of the team.
+    calculation: "[nickname]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  yearfounded:
+    name: year founded
+    synonym:
+      - founding year
+      - establishment year
+    desc: Year the team was founded.
+    calculation: "[yearfounded]"
+    consideration: Use range filtering for years.
+    function:
+      - distinct
+  city:
+    name: city
+    synonym:
+      - team city
+      - franchise location
+    desc: City where the team is based.
+    calculation: "[city]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  arena:
+    name: arena
+    synonym:
+      - home arena
+      - stadium
+    desc: Name of the team's home arena.
+    calculation: "[arena]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  arenacapacity:
+    name: arena capacity
+    synonym:
+      - stadium capacity
+      - seating capacity
+    desc: Seating capacity of the team's home arena.
+    calculation: "[arenacapacity]"
+    consideration: Use range filtering for capacity values.
+    function:
+      - distinct
+  owner:
+    name: owner
+    synonym:
+      - franchise owner
+      - team owner
+    desc: Name of the team's owner.
+    calculation: "[owner]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  generalmanager:
+    name: general manager
+    synonym:
+      - gm
+      - team manager
+    desc: Name of the team's general manager.
+    calculation: "[generalmanager]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  headcoach:
+    name: head coach
+    synonym:
+      - coach
+      - team coach
+    desc: Name of the team's head coach.
+    calculation: "[headcoach]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  dleagueaffiliation:
+    name: g league affiliation
+    synonym:
+      - d-league affiliate
+      - developmental team
+    desc: Name of the team's G League (formerly D-League) affiliate.
+    calculation: "[dleagueaffiliation]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  facebook:
+    name: facebook
+    synonym:
+      - facebook page
+      - social media
+    desc: Link to the team's official Facebook page.
+    calculation: "[facebook]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  instagram:
+    name: instagram
+    synonym:
+      - instagram page
+      - social media
+    desc: Link to the team's official Instagram page.
+    calculation: "[instagram]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  twitter:
+    name: twitter
+    synonym:
+      - twitter page
+      - social media
+    desc: Link to the team's official Twitter page.
+    calculation: "[twitter]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+
+metrics:
+  franchise_age:
+    name: franchise age
+    synonym:
+      - team age
+      - years since founding
+    desc: Number of years since the team was founded.
+    calculation: "YEAR(CURRENT_DATE) - [yearfounded]"
+    function: SUM
+  is_active_franchise:
+    name: is active franchise
+    synonym:
+      - active team
+      - currently operating
+    desc: Indicates if the team is currently active (1 = active, 0 = inactive).
+    calculation: "CASE WHEN [yearfounded] <= YEAR(CURRENT_DATE) THEN 1 ELSE 0 END"
+    function: SUM
+  social_media_presence:
+    name: social media presence
+    synonym:
+      - social media activity
+      - online presence
+    desc: Indicates if the team has active social media profiles (1 = yes, 0 = no).
+    calculation: "CASE WHEN [facebook] IS NOT NULL OR [instagram] IS NOT NULL OR [twitter] IS NOT NULL THEN 1 ELSE 0 END"
+    function: SUM

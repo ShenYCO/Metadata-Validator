@@ -1,0 +1,613 @@
+folder: NBA
+type: fact
+source:
+  schema.game:
+    columns:
+      - <all>
+
+attributes:
+  season_id:
+    name: season id
+    synonym:
+      - season identifier
+      - nba season id
+    desc: Unique identifier for the season.
+    calculation: "[season_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id_home:
+    name: home team id
+    synonym:
+      - home franchise id
+      - home team identifier
+    desc: Unique identifier for the home team.
+    calculation: "[team_id_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_home:
+    name: home team abbreviation
+    synonym:
+      - home team code
+      - home franchise abbreviation
+    desc: Short code for the home team.
+    calculation: "[team_abbreviation_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_name_home:
+    name: home team name
+    synonym:
+      - home franchise name
+      - home team full name
+    desc: Name of the home team.
+    calculation: "[team_name_home]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  game_id:
+    name: game id
+    synonym:
+      - game identifier
+      - match id
+    desc: Unique identifier for the game.
+    calculation: "[game_id]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  game_date:
+    name: game date
+    synonym:
+      - match date
+      - game timestamp
+    desc: Date and time of the game.
+    calculation: "[game_date]"
+    consideration: Use range filtering for dates.
+    function:
+      - distinct
+  matchup_home:
+    name: home matchup
+    synonym:
+      - home game description
+      - home team matchup
+    desc: Description of the matchup from the home team's perspective.
+    calculation: "[matchup_home]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  wl_home:
+    name: home win/loss
+    synonym:
+      - home result
+      - home outcome
+    desc: Win/loss result for the home team (W = Win, L = Loss).
+    calculation: "[wl_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  min:
+    name: minutes
+    synonym:
+      - game duration
+      - total minutes
+    desc: Total minutes played by the home team.
+    calculation: "[min]"
+    consideration: Use range filtering for minutes.
+    function:
+      - distinct
+  fgm_home:
+    name: home field goals made
+    synonym:
+      - home fgm
+      - home made shots
+    desc: Field goals made by the home team.
+    calculation: "[fgm_home]"
+    consideration: Use range filtering for field goals.
+    function:
+      - distinct
+  fga_home:
+    name: home field goals attempted
+    synonym:
+      - home fga
+      - home shot attempts
+    desc: Field goals attempted by the home team.
+    calculation: "[fga_home]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  fg_pct_home:
+    name: home field goal percentage
+    synonym:
+      - home fg percentage
+      - home shooting percentage
+    desc: Field goal percentage for the home team.
+    calculation: "[fg_pct_home]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  fg3m_home:
+    name: home three-point field goals made
+    synonym:
+      - home 3pm
+      - home made threes
+    desc: Three-point field goals made by the home team.
+    calculation: "[fg3m_home]"
+    consideration: Use range filtering for three-pointers.
+    function:
+      - distinct
+  fg3a_home:
+    name: home three-point field goals attempted
+    synonym:
+      - home 3pa
+      - home three-point attempts
+    desc: Three-point field goals attempted by the home team.
+    calculation: "[fg3a_home]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  fg3_pct_home:
+    name: home three-point field goal percentage
+    synonym:
+      - home 3p percentage
+      - home three-point shooting percentage
+    desc: Three-point field goal percentage for the home team.
+    calculation: "[fg3_pct_home]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  ftm_home:
+    name: home free throws made
+    synonym:
+      - home ftm
+      - home made free throws
+    desc: Free throws made by the home team.
+    calculation: "[ftm_home]"
+    consideration: Use range filtering for free throws.
+    function:
+      - distinct
+  fta_home:
+    name: home free throws attempted
+    synonym:
+      - home fta
+      - home free throw attempts
+    desc: Free throws attempted by the home team.
+    calculation: "[fta_home]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  ft_pct_home:
+    name: home free throw percentage
+    synonym:
+      - home ft percentage
+      - home free throw shooting percentage
+    desc: Free throw percentage for the home team.
+    calculation: "[ft_pct_home]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  oreb_home:
+    name: home offensive rebounds
+    synonym:
+      - home oreb
+      - home offensive boards
+    desc: Offensive rebounds by the home team.
+    calculation: "[oreb_home]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  dreb_home:
+    name: home defensive rebounds
+    synonym:
+      - home dreb
+      - home defensive boards
+    desc: Defensive rebounds by the home team.
+    calculation: "[dreb_home]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  reb_home:
+    name: home total rebounds
+    synonym:
+      - home rebounds
+      - home total boards
+    desc: Total rebounds by the home team.
+    calculation: "[reb_home]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  ast_home:
+    name: home assists
+    synonym:
+      - home assists
+      - home passes
+    desc: Assists by the home team.
+    calculation: "[ast_home]"
+    consideration: Use range filtering for assists.
+    function:
+      - distinct
+  stl_home:
+    name: home steals
+    synonym:
+      - home steals
+      - home takeaways
+    desc: Steals by the home team.
+    calculation: "[stl_home]"
+    consideration: Use range filtering for steals.
+    function:
+      - distinct
+  blk_home:
+    name: home blocks
+    synonym:
+      - home blocks
+      - home rejections
+    desc: Blocks by the home team.
+    calculation: "[blk_home]"
+    consideration: Use range filtering for blocks.
+    function:
+      - distinct
+  tov_home:
+    name: home turnovers
+    synonym:
+      - home turnovers
+      - home giveaways
+    desc: Turnovers by the home team.
+    calculation: "[tov_home]"
+    consideration: Use range filtering for turnovers.
+    function:
+      - distinct
+  pf_home:
+    name: home personal fouls
+    synonym:
+      - home fouls
+      - home infractions
+    desc: Personal fouls by the home team.
+    calculation: "[pf_home]"
+    consideration: Use range filtering for fouls.
+    function:
+      - distinct
+  pts_home:
+    name: home points
+    synonym:
+      - home score
+      - home total points
+    desc: Total points scored by the home team.
+    calculation: "[pts_home]"
+    consideration: Use range filtering for points.
+    function:
+      - distinct
+  plus_minus_home:
+    name: home plus/minus
+    synonym:
+      - home point differential
+      - home net rating
+    desc: Plus/minus rating for the home team.
+    calculation: "[plus_minus_home]"
+    consideration: Use range filtering for plus/minus values.
+    function:
+      - distinct
+  video_available_home:
+    name: home video available
+    synonym:
+      - home game footage
+      - home video flag
+    desc: Indicates if video footage is available for the home team (1 = yes, 0 = no).
+    calculation: "[video_available_home]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_id_away:
+    name: away team id
+    synonym:
+      - away franchise id
+      - away team identifier
+    desc: Unique identifier for the away team.
+    calculation: "[team_id_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_abbreviation_away:
+    name: away team abbreviation
+    synonym:
+      - away team code
+      - away franchise abbreviation
+    desc: Short code for the away team.
+    calculation: "[team_abbreviation_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  team_name_away:
+    name: away team name
+    synonym:
+      - away franchise name
+      - away team full name
+    desc: Name of the away team.
+    calculation: "[team_name_away]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  matchup_away:
+    name: away matchup
+    synonym:
+      - away game description
+      - away team matchup
+    desc: Description of the matchup from the away team's perspective.
+    calculation: "[matchup_away]"
+    consideration: Use ILIKE for partial matches.
+    function:
+      - distinct
+  wl_away:
+    name: away win/loss
+    synonym:
+      - away result
+      - away outcome
+    desc: Win/loss result for the away team (W = Win, L = Loss).
+    calculation: "[wl_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  fgm_away:
+    name: away field goals made
+    synonym:
+      - away fgm
+      - away made shots
+    desc: Field goals made by the away team.
+    calculation: "[fgm_away]"
+    consideration: Use range filtering for field goals.
+    function:
+      - distinct
+  fga_away:
+    name: away field goals attempted
+    synonym:
+      - away fga
+      - away shot attempts
+    desc: Field goals attempted by the away team.
+    calculation: "[fga_away]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  fg_pct_away:
+    name: away field goal percentage
+    synonym:
+      - away fg percentage
+      - away shooting percentage
+    desc: Field goal percentage for the away team.
+    calculation: "[fg_pct_away]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  fg3m_away:
+    name: away three-point field goals made
+    synonym:
+      - away 3pm
+      - away made threes
+    desc: Three-point field goals made by the away team.
+    calculation: "[fg3m_away]"
+    consideration: Use range filtering for three-pointers.
+    function:
+      - distinct
+  fg3a_away:
+    name: away three-point field goals attempted
+    synonym:
+      - away 3pa
+      - away three-point attempts
+    desc: Three-point field goals attempted by the away team.
+    calculation: "[fg3a_away]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  fg3_pct_away:
+    name: away three-point field goal percentage
+    synonym:
+      - away 3p percentage
+      - away three-point shooting percentage
+    desc: Three-point field goal percentage for the away team.
+    calculation: "[fg3_pct_away]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  ftm_away:
+    name: away free throws made
+    synonym:
+      - away ftm
+      - away made free throws
+    desc: Free throws made by the away team.
+    calculation: "[ftm_away]"
+    consideration: Use range filtering for free throws.
+    function:
+      - distinct
+  fta_away:
+    name: away free throws attempted
+    synonym:
+      - away fta
+      - away free throw attempts
+    desc: Free throws attempted by the away team.
+    calculation: "[fta_away]"
+    consideration: Use range filtering for attempts.
+    function:
+      - distinct
+  ft_pct_away:
+    name: away free throw percentage
+    synonym:
+      - away ft percentage
+      - away free throw shooting percentage
+    desc: Free throw percentage for the away team.
+    calculation: "[ft_pct_away]"
+    consideration: Use range filtering for percentages.
+    function:
+      - distinct
+  oreb_away:
+    name: away offensive rebounds
+    synonym:
+      - away oreb
+      - away offensive boards
+    desc: Offensive rebounds by the away team.
+    calculation: "[oreb_away]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  dreb_away:
+    name: away defensive rebounds
+    synonym:
+      - away dreb
+      - away defensive boards
+    desc: Defensive rebounds by the away team.
+    calculation: "[dreb_away]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  reb_away:
+    name: away total rebounds
+    synonym:
+      - away rebounds
+      - away total boards
+    desc: Total rebounds by the away team.
+    calculation: "[reb_away]"
+    consideration: Use range filtering for rebounds.
+    function:
+      - distinct
+  ast_away:
+    name: away assists
+    synonym:
+      - away assists
+      - away passes
+    desc: Assists by the away team.
+    calculation: "[ast_away]"
+    consideration: Use range filtering for assists.
+    function:
+      - distinct
+  stl_away:
+    name: away steals
+    synonym:
+      - away steals
+      - away takeaways
+    desc: Steals by the away team.
+    calculation: "[stl_away]"
+    consideration: Use range filtering for steals.
+    function:
+      - distinct
+  blk_away:
+    name: away blocks
+    synonym:
+      - away blocks
+      - away rejections
+    desc: Blocks by the away team.
+    calculation: "[blk_away]"
+    consideration: Use range filtering for blocks.
+    function:
+      - distinct
+  tov_away:
+    name: away turnovers
+    synonym:
+      - away turnovers
+      - away giveaways
+    desc: Turnovers by the away team.
+    calculation: "[tov_away]"
+    consideration: Use range filtering for turnovers.
+    function:
+      - distinct
+  pf_away:
+    name: away personal fouls
+    synonym:
+      - away fouls
+      - away infractions
+    desc: Personal fouls by the away team.
+    calculation: "[pf_away]"
+    consideration: Use range filtering for fouls.
+    function:
+      - distinct
+  pts_away:
+    name: away points
+    synonym:
+      - away score
+      - away total points
+    desc: Total points scored by the away team.
+    calculation: "[pts_away]"
+    consideration: Use range filtering for points.
+    function:
+      - distinct
+  plus_minus_away:
+    name: away plus/minus
+    synonym:
+      - away point differential
+      - away net rating
+    desc: Plus/minus rating for the away team.
+    calculation: "[plus_minus_away]"
+    consideration: Use range filtering for plus/minus values.
+    function:
+      - distinct
+  video_available_away:
+    name: away video available
+    synonym:
+      - away game footage
+      - away video flag
+    desc: Indicates if video footage is available for the away team (1 = yes, 0 = no).
+    calculation: "[video_available_away]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+  season_type:
+    name: season type
+    synonym:
+      - game type
+      - season category
+    desc: Type of season (e.g., Regular Season, Playoffs).
+    calculation: "[season_type]"
+    consideration: Use exact match for filtering.
+    function:
+      - distinct
+
+metrics:
+  total_points:
+    name: total points
+    synonym:
+      - combined score
+      - game total points
+    desc: Total points scored by both teams in the game.
+    calculation: "[pts_home] + [pts_away]"
+    function: SUM
+  point_differential:
+    name: point differential
+    synonym:
+      - score difference
+      - margin of victory
+    desc: Difference in points between the home and away teams.
+    calculation: "[pts_home] - [pts_away]"
+    function: SUM
+  total_rebounds:
+    name: total rebounds
+    synonym:
+      - combined rebounds
+      - game total boards
+    desc: Total rebounds by both teams in the game.
+    calculation: "[reb_home] + [reb_away]"
+    function: SUM
+  total_assists:
+    name: total assists
+    synonym:
+      - combined assists
+      - game total passes
+    desc: Total assists by both teams in the game.
+    calculation: "[ast_home] + [ast_away]"
+    function: SUM
+  total_turnovers:
+    name: total turnovers
+    synonym:
+      - combined turnovers
+      - game total giveaways
+    desc: Total turnovers by both teams in the game.
+    calculation: "[tov_home] + [tov_away]"
+    function: SUM
+  total_fouls:
+    name: total fouls
+    synonym:
+      - combined fouls
+      - game total infractions
+    desc: Total fouls by both teams in the game.
+    calculation: "[pf_home] + [pf_away]"
+    function: SUM
+  total_steals:
+    name: total steals
+    synonym:
+      - combined steals
+     

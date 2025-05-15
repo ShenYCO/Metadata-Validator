@@ -44,6 +44,7 @@ def main():
         if ret_format != 0:
             print("❌ Format Validation Failed:")
             print("   🔍 Error:")
+            # print("   " + (err_format or out_format).replace("\n", "\n   "))
             print(err_format or out_format)
             continue  # Skip schema validation if format fails
 
